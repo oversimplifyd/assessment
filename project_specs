@@ -1,0 +1,50 @@
+Project Specifications\
+
+News publishing web application
+
+Any user could register with an email address. The application sends a verification link to the
+email address. When the user clicks the link, the application asks for a new password (can be
+tested on localhost w/o need for a public domain). Now the user is registered and is able to
+publish news. Without this verification user cannot publish news.
+
+After log in the user could see his own published news list, remove or publish a new article.
+No edit of news is permitted.
+
+For each news article the following information is required
+News title
+A single photo
+News text
+Current date and time
+Reporter user name / email
+Newsstand web application available w/o log in for general public
+Users could see the news highlights. Latest 10 news only.
+Upon clicking an article highlight, the user is able to view a complete article.
+The user is able to download a PDF file of the displayed news article.
+A News RSS feed service
+An RSS feed can be subscribed to, which includes latest 10 news articles.
+
+
+Entities
+- User
+- News
+
+Relationships
+- A user hasMany News
+- A news belongsTo a user
+
+Table
+USER
+- id
+- email
+- password
+- username
+- timestamps
+
+NEWS
+- id
+- user_id
+- title
+- photo
+- timestamps
+- deleted_at (SoftSeletes)
+
