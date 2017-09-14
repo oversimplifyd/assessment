@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServersTable extends Migration
+class CreateRamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,10 +18,6 @@ class CreateServersTable extends Migration
             $table->string('type', 100);
             $table->integer('size');
             $table->integer('server_id');
-            $table->foreign('server_id')
-                ->references('id')
-                ->on('servers')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }
