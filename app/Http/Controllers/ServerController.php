@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class ServerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => [
+            'store',
+            'destroy',
+            'getUserServers'
+        ]]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -79,6 +89,11 @@ class ServerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function getUserServers()
     {
         //
     }

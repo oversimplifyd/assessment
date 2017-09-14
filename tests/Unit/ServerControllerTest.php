@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Authentication;
 
-use App\Ram;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\User;
