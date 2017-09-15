@@ -2,10 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Controllers\API\CommonTraits\CustomValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class APIServerCreateRequest extends FormRequest
 {
+
+    use CustomValidation;
+
     /**
      * Determine if the user is authorized to make this request.
      *
