@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Exceptions\AppError;
 use App\Http\Controllers\API\CommonTraits\JSONResponse;
 use App\Http\Requests\APIServerCreateRequest;
 use App\Server;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Routing\Controller;
 
 class APIController extends Controller
 {
@@ -18,11 +18,11 @@ class APIController extends Controller
 
     public function __construct()
     {
-        /*$this->middleware('auth', ['only' => [
+        $this->middleware('basic_auth', ['only' => [
             'store',
             'destroy',
             'getUserServers'
-        ]]);*/
+        ]]);
     }
 
     /**
@@ -47,12 +47,18 @@ class APIController extends Controller
         DB::beginTransaction();
         try {
 
-            $server = Server::create($request->except(['rams']))
-                ->createMany($request->only(['rams']));
+            $server = Server::create(array_merge(
+                ['user_id' => Auth::user()->id],
+                $request->except(['rams'])
+            ));
+
+            $server
+                ->rams()
+                ->createMany($request['rams']);
 
             DB::commit();
 
-            return $this->success($server);
+            return $this->success($server->load('rams'));
         } catch (\Exception $exception) {
 
             DB::rollback();
@@ -97,7 +103,11 @@ class APIController extends Controller
      */
     public function getUserServers()
     {
-        $servers = Auth::user()->servers()->paginate(20);
-        return $this->success($servers);
+        $userId = Auth::user()->id;
+        return $this->success(
+            Server::with('rams')
+                ->where('user_id', $userId)
+                ->paginate(20)
+        );
     }
 }

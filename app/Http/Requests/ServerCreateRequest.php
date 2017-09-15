@@ -26,7 +26,7 @@ class ServerCreateRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'brand' => 'required|max:255',
-            'asset_id' => 'required|unique:servers',
+            'asset_id' => 'required|integer|unique:servers',
             'price' => 'nullable|integer|min:1',
             'rams' => 'required|array',
             'rams.*.type' => 'required|max:255',

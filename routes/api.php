@@ -14,7 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    $excludeRoutes = [];
-    Route::resource('servers', 'APIController', $excludeRoutes);
     return $request->user();
+});
+
+Route::namespace('API')->group(function () {
+    Route::resource('servers', 'APIController');
+    Route::get('user-servers', 'APIController@getUserServers');
 });

@@ -18,7 +18,7 @@ class Server extends Model
      * @var array
      */
     protected $fillable = [
-        'asset_id', 'name', 'brand', 'price'
+        'asset_id', 'name', 'brand', 'price', 'user_id'
     ];
 
     public function users()
