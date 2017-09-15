@@ -59,6 +59,7 @@ class APIController extends Controller
             DB::commit();
 
             return $this->success($server->load('rams'));
+
         } catch (\Exception $exception) {
 
             DB::rollback();

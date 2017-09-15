@@ -28,7 +28,8 @@ class ServerController extends Controller
      */
     public function index()
     {
-        return view('server.all');
+        $servers = Server::with('rams')->paginate(20);
+        return view('server.all', ['servers' => $servers]);
     }
 
     /**
@@ -52,8 +53,14 @@ class ServerController extends Controller
         DB::beginTransaction();
         try {
 
-            Server::create($request->except(['rams']))
-                ->createMany($request->only(['rams']));
+            $server = Server::create(array_merge(
+                ['user_id' => Auth::user()->id],
+                $request->except(['rams'])
+            ));
+
+            $server
+                ->rams()
+                ->createMany($request['rams']);
 
             DB::commit();
             return redirect()->route('user-servers');
@@ -128,7 +135,13 @@ class ServerController extends Controller
      */
     public function getUserServers()
     {
-        $servers = Auth::user()->servers()->paginate(20);
+
+        $userId = Auth::user()->id;
+
+        $servers = Server::with('rams')
+            ->where('user_id', $userId)
+            ->paginate(20);
+
         return view('server.user-servers', [
             'servers' => $servers
         ]);
