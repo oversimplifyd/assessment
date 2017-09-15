@@ -56,9 +56,10 @@
                                 </div>
                             </div>
 
-                            <div id="ram-section">
+                            <div id="ram-container">
                                 <hr>
                                 <h4 style="text-align: center;">RAMS</h4>
+
                                 <div class="form-group">
                                     <label class="control-label col-sm-2 ">Type</label>
                                     <div class="col-sm-4">
@@ -69,40 +70,13 @@
                                         <input name="rams[0][size]" class="form-control" required>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2 ">Type</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[1][type]" class="form-control" required>
-                                    </div>
-                                    <label class="control-label col-sm-2 ">Size</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[1][size]" class="form-control" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2 ">Type</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[2][type]" class="form-control" required>
-                                    </div>
-                                    <label class="control-label col-sm-2 ">Size</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[2][size]" class="form-control" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2 ">Type</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[3][type]" class="form-control" required>
-                                    </div>
-                                    <label class="control-label col-sm-2 ">Size</label>
-                                    <div class="col-sm-4">
-                                        <input name="rams[3][size]" class="form-control" required>
-                                    </div>
-                                </div>
                             </div>
+
+
+                            <div>
+                                <a href="#" id="add-ram" class="btn btn-primary">Add Ram</a>
+                            </div>
+
 
                             <div class="form-group">
                                 <div class="col-sm-8 pull-right">

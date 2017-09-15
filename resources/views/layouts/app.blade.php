@@ -85,5 +85,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js" integrity="sha256-4JY5MVcEmAVSuS6q4h9mrwCm6KNx91f3awsSQgwu0qc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+            console.log( "ready!" );
+        });
+
+        var testFormsCount = 1;
+
+        $('#add-ram').on('click', function(e){
+            console.log('got here');
+            e.preventDefault();
+            generateForm(testFormsCount);
+            testFormsCount++;
+        });
+
+        function generateForm (index) {
+            var ramTypeAttr = "rams["+index+"][type]";
+            var ramSizeAttr = "rams["+index+"][size]";
+
+            var ramForm = $("<div class=\"form-group\"><label class=\"control-label col-sm-2 \">Type</label><div class=\"col-sm-4\"><input name=\""+ramTypeAttr+"\" class=\"form-control\" required></div><label class=\"control-label col-sm-2 \">Size</label><div class=\"col-sm-4\"><input name=\""+ramSizeAttr+"\" class=\"form-control\" required></div></div>");
+            var container = $('#ram-container').append(ramForm);
+        }
+
+    </script>
 </body>
 </html>
