@@ -34,7 +34,7 @@ class APIServerCreateRequest extends FormRequest
             'price' => 'nullable|integer|min:1',
             'rams' => 'required|array',
             'rams.*.type' => 'required|max:255',
-            'rams.*.size' => 'required|integer'
+            'rams.*.size' => 'required|integer|min:1'
         ];
     }
 }
