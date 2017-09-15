@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('servers', 'ServerController');
+Route::get('/user-servers', 'ServerController@getUserServers')->name('user-servers');

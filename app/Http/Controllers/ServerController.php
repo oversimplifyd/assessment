@@ -86,7 +86,7 @@ class ServerController extends Controller
     {
         $server = Server::with('rams')
             ->where('id', '=', $id)
-            ->get();
+            ->first();
 
         if ($server) {
             return view('server.single', ['server' => $server]);

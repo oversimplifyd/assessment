@@ -30,15 +30,14 @@
                     <p>Name: {{$server->name}}</p>
                     <p>Brand: {{$server->brand}}</p>
                     <p>Price: {{$server->price}}</p>
-                    <br>
                     <hr>
                     <h3>Available Rams</h3>
                     @if($server->rams->count() > 0)
                         @foreach($server->rams as $ram)
                             <div>
                                 <h4>Ram Info.</h4>
-                                <p>Size: {{$ram->size}}</p>
                                 <p>Type: {{$ram->type}}</p>
+                                <p>Size: {{$ram->size}} GB</p>
                             </div>
                         @endforeach
                     @endif

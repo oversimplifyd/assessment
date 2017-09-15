@@ -78,7 +78,7 @@ class APIController extends Controller
     {
         $server = Server::with('rams')
             ->where('id', '=', $id)
-            ->get();
+            ->first();
 
         if ($server) {
             return $this->success($server);

@@ -60,16 +60,16 @@
                     <div class="col-md-3 col-sm-3 col-xs-3">
                         <a href="/servers/{{$server->id}}"><div class="title-box"><p>{{$server->name}}</p><p>{{$server->brand}}</p></div></a>
                         <div class="detail-box"><p><span>Added: {{$server->created_at->diffForHumans()}}</span></p></div>
-                    </div>
-                    <div class="detail-box">
-                        <form action="{{ url('servers/'.$server->id) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                        <div class="detail-box">
+                            <form action="{{ url('servers/'.$server->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
 
-                            <button type="submit" class="btn btn-xs btn-danger">
-                                <i class="fa fa-btn fa-trash"></i>Remove
-                            </button>
-                        </form>
+                                <button type="submit" class="btn btn-xs btn-danger">
+                                    <i class="fa fa-btn fa-trash"></i>Remove
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>
