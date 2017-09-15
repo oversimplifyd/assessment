@@ -27,6 +27,7 @@
             <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 well">
                 <div id="description">
                     <h2>Server Info.</h2>
+                    <p>AssetId: {{$server->asset_id}}</p>
                     <p>Name: {{$server->name}}</p>
                     <p>Brand: {{$server->brand}}</p>
                     <p>Price: {{$server->price}}</p>
